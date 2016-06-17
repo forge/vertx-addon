@@ -36,10 +36,10 @@ public class VertxMavenFacet extends AbstractFacet<Project> implements ProjectFa
 
   public static final String VERTX_VERSION_PROPERTY = "vertx.version";
 
-  private String vertxVersion = "3.2.0";
+  private String vertxVersion = "3.2.1";
 
   private final static Coordinate MAVEN_SHADE_PLUGIN_COORDINATE = CoordinateBuilder
-      .create("org.apache.maven.plugins:maven-shade-plugin:2.3");
+      .create("org.apache.maven.plugins:maven-shade-plugin:2.4");
 
   private final static Coordinate MAVEN_EXEC_PLUGIN_COORDINATE = CoordinateBuilder
       .create("org.codehaus.mojo:exec-maven-plugin:1.4.0");
@@ -119,13 +119,7 @@ public class VertxMavenFacet extends AbstractFacet<Project> implements ProjectFa
     } else {
       report("Configuring the maven-shade-plugin...");
 
-      Resource<URL> urlResource = resourceFactory.create(getClass()
-          .getResource("maven-shade-plugin-configuration.xml"));
-
-      Configuration configuration = ConfigurationBuilder.create();
-      configuration.addConfigurationElement(ConfigurationElementBuilder.create().setName("outputFile").setText("${project" +
-          ".build.directory}/${project.artifactId}-${project.version}-fat.jar"));
-      configuration.addConfigurationElement(ConfigurationElementBuilder.create().setName("transformers").setText(urlResource.getContents()));
+      Configuration configuration = getShadeConfiguration();
 
       builder.addExecution(ExecutionBuilder.create().addGoal("shade").setPhase("package").setId("package-fat-jar")
           .setConfig(configuration));
@@ -136,6 +130,31 @@ public class VertxMavenFacet extends AbstractFacet<Project> implements ProjectFa
       String topLevelPackage = facet.getBasePackage();
       ForgeUtils.addPropertyToProject(this.getFaceted(), "verticle.main", topLevelPackage + ".MainVerticle");
     }
+  }
+
+  public static Configuration getShadeConfiguration() {
+    PluginElement manifestTransformer = ConfigurationElementBuilder.create()
+        .setName("transformer")
+        .addAttribute("implementation", "org.apache.maven.plugins.shade.resource.ManifestResourceTransformer")
+        .setText("<manifestEntries>" +
+            "<Main-Class>io.vertx.core.Launcher</Main-Class>" +
+            "<Main-Verticle>${verticle.main}</Main-Verticle>" +
+            "</manifestEntries>");
+
+    PluginElement appendingTransformer = ConfigurationElementBuilder.create()
+        .setName("transformer")
+        .addAttribute("implementation", "org.apache.maven.plugins.shade.resource.AppendingTransformer")
+        .setText("<resource>META-INF/services/io.vertx.core.spi.VerticleFactory</resource>");
+
+    ConfigurationElement transformers = ConfigurationElementBuilder.create().setName("transformers")
+        .addChild(manifestTransformer)
+        .addChild(appendingTransformer);
+
+    Configuration configuration = ConfigurationBuilder.create();
+    configuration.addConfigurationElement(ConfigurationElementBuilder.create().setName("outputFile").setText("${project" +
+        ".build.directory}/${project.artifactId}-${project.version}-fat.jar"));
+    configuration.addConfigurationElement(transformers);
+    return configuration;
   }
 
   private void report(String message) {

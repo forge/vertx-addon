@@ -30,7 +30,7 @@ public class SetupVertxCommand extends AbstractVertxCommand {
       return facet.getDefaultVertxVersion();
     });
     version.setValueChoices(() -> {
-      return asList("3.0.0", "3.1.0", "3.2.0");
+      return asList("3.0.0", "3.1.0", "3.2.0", "3.2.1");
     });
   }
 
