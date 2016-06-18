@@ -1,65 +1,94 @@
 == vertx-forge-addon
 :idprefix: id_ 
-(choose one, do not modify, then add a second sentence with a brief description, starting with - "The vertx-forge-addon addon enables blah blah...)
-This addon provides *standalone* functionality, and *exports services* for use in other addons. 
-This addon provides *standalone* functionality.
-This addon *exports services* for use in other addons. 
-This addon *provides classes* for use in other addons. 
-This addon is a 'Furnace container' that provides *lifecycle* and *service registry* support for dependent addons.
+
+This JBoss Forge addon lets you create Vert.x projects.
+
+It let you:
+
+* create new Vert.x project
+* add verticles in Java, Groovy, JavaScript and Ruby
+
+In the current state it only support Maven and the generated project is packaged as a _fat jar_.
         
-=== Dependencies: None (or)
-=== Depends on
-[options="header"]
-|===
-|Addon |Exported |Optional
-|DEP1
-|yes
-|no
-|DEP2
-|yes
-|yes
-|===
+=== Installation
 
-== Setup
+```
+addon-install --coordinate me.escoffier.forge:vertx-forge-addon
+```
 
-This Addon requires the following installation steps.
+=== Create project
 
-=== Add configuration to pom.xml 
+To create a project, just create a _Maven_ project packaged as a _jar_ file, without a _technical stack_:
 
-To use this addon, you must add it as a dependency in the *pom.xml* of your `forge-addon` classified artifact:
-(Make sure the dependency is put all the way to the left, and uses 3 spaces for indentation of GAV)
-[source,xml]
-----
-<dependency>
-   <groupId>org.vertx.forge.addon</groupId>
-   <artifactId>vertx-forge-addon</artifactId>
-   <classifier>forge-addon</classifier>
-   <version>${version}</version>
-</dependency>
-----
-== Features
-ABCFactory for simple ABC blah:: 
-Allows for blah blah
-+
-[source,java]
-----
-@Inject private ABCFactory factory;
-ABC abc = factory.createABC();
-----
-+
-[TIP] 
-====
-If your addon uses a container that does not support "@Inject" annotations, services such as the `ABCFactory` may also be 
-accessed via the `AddonRegistry`:
-----
-Imported<ABCFactory> imported = addonRegistry.getServices(ABCFactory.class);
-ABCFactory factory = imported.get();
-----
-==== 
-Creating a new XYZ instance:: 
-Causes XYZ to occur
-+
-[source,java]
-----
-XYZ xyz = factory.createXYZ();
-----
+```
+[tmp]$ project-new
+***INFO*** Required inputs not satisfied, entering interactive mode
+* Project name:  some-project
+? Top level package [org.some.project]:  org.acme
+? Version [1.0.0-SNAPSHOT]:
+? Final name:
+? Project location [/Users/clement/tmp]:
+
+[0] (x) war
+[1] ( ) jar
+[2] ( ) parent
+[3] ( ) forge-addon
+[4] ( ) resource-jar
+[5] ( ) ear
+[6] ( ) from-archetype
+[7] ( ) generic
+
+Press <ENTER> to confirm, or <CTRL>+C to cancel.
+* Project type: [0-7] 1
+
+[0] (x) Maven
+
+Press <ENTER> to confirm, or <CTRL>+C to cancel.
+* Build system: [0]
+
+[0] ( ) JAVA_EE_7
+[1] ( ) JAVA_EE_6
+[2] ( ) NONE
+
+Press <ENTER> to confirm, or <CTRL>+C to cancel.
+? Stack (The technology stack to be used in this project): [0-2] 2
+***SUCCESS*** Project named 'some-project' has been created.
+```
+
+Then, add vert.x to the project using:
+
+```
+vertx-setup
+```
+
+Here you go you have your vert.x project with a java verticle
+
+=== Build and Run
+
+Build the project using:
+
+```
+build
+```
+
+Run it using:
+
+```
+build org.codehaus.mojo:exec-maven-plugin:exec@run
+```
+
+Hit `CTRL+C` to quit the application
+
+
+=== Add verticle
+
+You can add a verticle using:
+
+```
+vertx-add-verticle --main --name=MyVerticle.js
+```
+
+`--main` describes whether or not the verticle is going to be the `main-verticle` of the application.
+`name` define the name of the verticle, the type is detected from the extension.
+
+The addon configures the project to use the right dependencies and directory structure.
