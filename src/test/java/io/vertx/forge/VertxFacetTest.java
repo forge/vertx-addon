@@ -37,7 +37,7 @@ import static org.assertj.core.data.MapEntry.entry;
 @RunWith(Arquillian.class)
 public class VertxFacetTest {
 
-  String version = "3.2.1";
+  String version = "3.3.2";
 
   @Deployment
   @AddonDependencies

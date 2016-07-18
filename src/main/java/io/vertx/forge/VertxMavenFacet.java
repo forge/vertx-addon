@@ -36,10 +36,10 @@ public class VertxMavenFacet extends AbstractFacet<Project> implements ProjectFa
 
   public static final String VERTX_VERSION_PROPERTY = "vertx.version";
 
-  private String vertxVersion = "3.2.1";
+  private String vertxVersion = "3.3.2";
 
   private final static Coordinate MAVEN_SHADE_PLUGIN_COORDINATE = CoordinateBuilder
-      .create("org.apache.maven.plugins:maven-shade-plugin:2.4");
+      .create("org.apache.maven.plugins:maven-shade-plugin:2.4.3");
 
   private final static Coordinate MAVEN_EXEC_PLUGIN_COORDINATE = CoordinateBuilder
       .create("org.codehaus.mojo:exec-maven-plugin:1.4.0");
