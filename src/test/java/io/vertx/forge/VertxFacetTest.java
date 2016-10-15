@@ -88,7 +88,8 @@ public class VertxFacetTest {
     checkDependency(dependencies, "io.vertx", "vertx-core", null, null);
     checkDependency(dependencies, "io.vertx", "vertx-hazelcast", null, null);
     checkDependency(dependencies, "io.vertx", "vertx-unit", null, "test");
-    assertThat(dependencies.getDependencies()).hasSize(3);
+    checkDependency(dependencies, "junit", "junit", "4.12", "test");
+    assertThat(dependencies.getDependencies()).hasSize(4);
 
     // Check maven compiler
     hasPlugin(plugins, "maven-compiler-plugin");
@@ -121,7 +122,8 @@ public class VertxFacetTest {
     checkDependency(dependencies, "io.vertx", "vertx-core", null, null);
     checkDependency(dependencies, "io.vertx", "vertx-hazelcast", null, null);
     checkDependency(dependencies, "io.vertx", "vertx-unit", null, "test");
-    assertThat(dependencies.getDependencies()).hasSize(4);
+    checkDependency(dependencies, "junit", "junit", "4.12", "test");
+    assertThat(dependencies.getDependencies()).hasSize(5);
 
     // Check maven compiler
     hasPlugin(plugins, "maven-compiler-plugin");
@@ -153,7 +155,8 @@ public class VertxFacetTest {
     checkDependency(dependencies, "io.vertx", "vertx-core", "3.1.0", null);
     checkDependency(dependencies, "io.vertx", "vertx-hazelcast", null, null);
     checkDependency(dependencies, "io.vertx", "vertx-unit", null, "test");
-    assertThat(dependencies.getDependencies()).hasSize(3);
+    checkDependency(dependencies, "junit", "junit", "4.12", "test");
+    assertThat(dependencies.getDependencies()).hasSize(4);
 
     // Check maven compiler
     hasPlugin(plugins, "maven-compiler-plugin");
@@ -185,7 +188,8 @@ public class VertxFacetTest {
     checkDependency(dependencies, "io.vertx", "vertx-core", null, null);
     checkDependency(dependencies, "io.vertx", "vertx-hazelcast", null, null);
     checkDependency(dependencies, "io.vertx", "vertx-unit", null, "test");
-    assertThat(dependencies.getDependencies()).hasSize(3);
+    checkDependency(dependencies, "junit", "junit", "4.12", "test");
+    assertThat(dependencies.getDependencies()).hasSize(4);
 
     // Check maven compiler
     hasPlugin(plugins, "maven-compiler-plugin");
@@ -218,7 +222,8 @@ public class VertxFacetTest {
     checkDependency(dependencies, "io.vertx", "vertx-core", null, null);
     checkDependency(dependencies, "io.vertx", "vertx-hazelcast", null, null);
     checkDependency(dependencies, "io.vertx", "vertx-unit", null, "test");
-    assertThat(dependencies.getDependencies()).hasSize(3);
+    checkDependency(dependencies, "junit", "junit", "4.12", "test");
+    assertThat(dependencies.getDependencies()).hasSize(4);
 
     // Check maven compiler
     hasPlugin(plugins, "maven-compiler-plugin");
