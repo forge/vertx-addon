@@ -37,6 +37,7 @@ public class VertxMavenFacet extends AbstractFacet<Project> implements ProjectFa
   public static final String VERTX_VERSION_PROPERTY = "vertx.version";
 
   private String vertxVersion = "3.3.2";
+  private String junitVersion = "4.12";
 
   private final static Coordinate MAVEN_SHADE_PLUGIN_COORDINATE = CoordinateBuilder
       .create("org.apache.maven.plugins:maven-shade-plugin:2.4.3");
@@ -236,6 +237,7 @@ public class VertxMavenFacet extends AbstractFacet<Project> implements ProjectFa
     ForgeUtils.getOrAddDependency(getFaceted(), "io.vertx", "vertx-core");
     ForgeUtils.getOrAddDependency(getFaceted(), "io.vertx", "vertx-hazelcast");
     ForgeUtils.getOrAddDependency(getFaceted(), "io.vertx", "vertx-unit", null, "test");
+    ForgeUtils.getOrAddDependency(getFaceted(), "junit", "junit", junitVersion, "test");
   }
 
   public DependencyFacet getDependencyFacet() {
