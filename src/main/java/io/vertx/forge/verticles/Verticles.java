@@ -1,8 +1,8 @@
 package io.vertx.forge.verticles;
 
-import io.vertx.forge.facets.CustomResourceFacet;
 import io.vertx.forge.ForgeUtils;
 import io.vertx.forge.VertxMavenFacet;
+import io.vertx.forge.facets.CustomResourceFacet;
 import org.jboss.forge.addon.parser.java.facets.JavaSourceFacet;
 import org.jboss.forge.addon.parser.java.resources.JavaResource;
 import org.jboss.forge.addon.projects.Project;
@@ -11,9 +11,12 @@ import org.jboss.forge.addon.resource.Resource;
 import org.jboss.forge.addon.resource.ResourceFactory;
 import org.jboss.forge.roaster.Roaster;
 import org.jboss.forge.roaster.model.source.JavaClassSource;
+import org.jboss.forge.roaster.model.source.MethodSource;
 
 import javax.inject.Inject;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -151,7 +154,96 @@ public class Verticles {
     if (isMain) {
       ForgeUtils.addPropertyToProject(project, "verticle.main", topLevelPackage + "." + className);
     }
-
+    addJavaVerticleTest(project,packageName,className);
     return resource.toString();
+  }
+
+  private void addJavaVerticleTest(Project project, String packageName, String className) {
+
+    JavaSourceFacet source = project.getFacet(JavaSourceFacet.class);
+
+    String topLevelPackage;
+    if (packageName == null) {
+      topLevelPackage = source.getBasePackage();
+    } else {
+      topLevelPackage = packageName;
+    }
+
+    final String verticleFQN = topLevelPackage+"."+className;
+    final String testClassName = className+"Test";
+
+
+    final List<String> testImports = new ArrayList<String>() {{
+      add("io.vertx.core.Vertx");
+      add("io.vertx.ext.unit.Async");
+      add("io.vertx.ext.unit.TestContext");
+      add("io.vertx.ext.unit.junit.VertxUnitRunner");
+      add("org.junit.After");
+      add("org.junit.Before");
+      add("org.junit.Test");
+      add("org.junit.runner.RunWith");
+      add(verticleFQN);
+    }};
+
+    JavaClassSource javaVerticleTestClass = Roaster.create(JavaClassSource.class)
+            .setPackage(topLevelPackage)
+            .setAbstract(false)
+            .setName(testClassName);
+    testImports.forEach( tImport ->  javaVerticleTestClass.addImport(tImport));
+
+
+    javaVerticleTestClass
+            .addAnnotation()
+            .setName("RunWith")
+            .setLiteralValue("VertxUnitRunner.class");
+
+    javaVerticleTestClass
+            .addField()
+            .setName("vertx")
+            .setType("Vertx")
+            .setPrivate();
+
+    //setup
+    MethodSource setupMethod =  javaVerticleTestClass
+            .addMethod()
+            .setName("setup")
+            .setBody(
+            "vertx = Vertx.vertx();\nvertx.deployVerticle("+className+".class.getName(), context.asyncAssertSuccess());")
+            .setPublic()
+            .setReturnTypeVoid();
+
+    setupMethod.addAnnotation("Before");
+    setupMethod.addParameter("TestContext","context");
+
+    //tearDown
+   MethodSource tearDownMethod =  javaVerticleTestClass
+            .addMethod()
+            .setName("tearDown")
+            .setBody(
+                    "vertx.close(context.asyncAssertSuccess());")
+            .setPublic()
+           .setReturnTypeVoid();
+
+    tearDownMethod.addAnnotation("After");
+    tearDownMethod.addParameter("TestContext","context");
+
+    //sample test method
+    javaVerticleTestClass
+            .addImport("junit.framework.TestCase.fail")
+            .setStatic(true);
+
+    MethodSource sampleTestMethod = javaVerticleTestClass
+            .addMethod()
+            .setName("myAppTest")
+            .setBody(
+                    "fail(\"add your test case here\");")
+            .setPublic()
+            .setReturnTypeVoid();
+
+    sampleTestMethod.addAnnotation("Test");
+    sampleTestMethod.addParameter("TestContext","context");
+
+    source.saveTestJavaSource(javaVerticleTestClass.getEnclosingType());
+
   }
 }
