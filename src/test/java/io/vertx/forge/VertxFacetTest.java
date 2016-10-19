@@ -37,7 +37,7 @@ import static org.assertj.core.data.MapEntry.entry;
 @RunWith(Arquillian.class)
 public class VertxFacetTest {
 
-  String version = "3.3.2";
+  String version = "3.3.3";
 
   @Deployment
   @AddonDependencies
@@ -203,7 +203,7 @@ public class VertxFacetTest {
     Project project = projectFactory.createProject(resourceFactory.create(root), projectProvider);
 
     DependencyFacet dependencies = project.getFacet(DependencyFacet.class);
-    dependencies.addManagedDependency(DependencyBuilder.create("io.vertx:vertx-dependencies:3.2.0")
+    dependencies.addManagedDependency(DependencyBuilder.create("io.vertx:vertx-dependencies:3.3.0")
         .setScopeType("import").setPackaging("pom"));
     dependencies.addDirectDependency(DependencyBuilder.create("io.vertx:vertx-core"));
 

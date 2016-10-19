@@ -19,7 +19,7 @@
 
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-    <version.forge>3.2.2.Final</version.forge>
+    <version.forge>3.3.2.Final</version.forge>
     <version.furnace>2.23.5.Final</version.furnace>
 
   </properties>
@@ -91,7 +91,7 @@
     <dependency>
       <groupId>org.assertj</groupId>
       <artifactId>assertj-core</artifactId>
-      <version>3.4.1</version>
+      <version>3.5.2</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -113,7 +113,7 @@
     <plugins>
       <plugin>
         <artifactId>maven-jar-plugin</artifactId>
-        <version>2.6</version>
+        <version>3.0.2</version>
         <executions>
           <execution>
             <id>create-forge-addon</id>
@@ -130,6 +130,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.5.1</version>
         <configuration>
           <source>1.8</source>
           <target>1.8</target>
