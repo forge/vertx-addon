@@ -35,7 +35,7 @@ public class SetupVertxCommand extends AbstractVertxCommand {
 	facet.setVertxVersion(vertxVersion.getValue());
 	facet.setFaceted(getSelectedProject(uiExecutionContext.getUIContext()));
 	facet.install();
-	return Results.success("vert.x project created successfully");
+	return Results.success("Vert.x project created successfully");
     }
 
     @Override

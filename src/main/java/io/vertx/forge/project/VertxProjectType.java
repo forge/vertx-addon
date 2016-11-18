@@ -7,7 +7,7 @@
 
 package io.vertx.forge.project;
 
-import java.util.Arrays;
+import java.util.Collections;
 
 import org.jboss.forge.addon.projects.AbstractProjectType;
 import org.jboss.forge.addon.projects.ProjectFacet;
@@ -27,7 +27,7 @@ public class VertxProjectType extends AbstractProjectType {
 
     @Override
     public Iterable<Class<? extends ProjectFacet>> getRequiredFacets() {
-	return Arrays.asList(VertxMavenFacet.class);
+	return Collections.singleton(VertxMavenFacet.class);
     }
 
     @Override
@@ -47,7 +47,7 @@ public class VertxProjectType extends AbstractProjectType {
 
     @Override
     public String toString() {
-	return "vert-x";
+	return "vert.x";
     }
 
 }
