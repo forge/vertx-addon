@@ -7,6 +7,7 @@
 
   <description>A JBoss Forge add-on for Eclipse Vert.x</description>
   <url>https://github.com/cescoffier/vertx-forge-addon</url>
+  <name>Vert.x add-on for JBoss Forge</name>
 
   <licenses>
     <license>
