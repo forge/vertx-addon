@@ -15,7 +15,6 @@ public class MavenConfigurationTest {
     Configuration configuration = VertxMavenFacet.getShadeConfiguration();
     System.out.println(configuration);
     assertThat(configuration.toString())
-        .contains("<outputFile>${project.build.directory}/${project.artifactId}-${project.version}-fat.jar</outputFile>")
         .contains("implementation=\"org.apache.maven.plugins.shade.resource.ManifestResourceTransformer\"")
         .contains("implementation=\"org.apache.maven.plugins.shade.resource.AppendingTransformer\"");
   }

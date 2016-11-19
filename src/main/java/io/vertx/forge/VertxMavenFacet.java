@@ -152,8 +152,6 @@ public class VertxMavenFacet extends AbstractFacet<Project> implements ProjectFa
         .addChild(appendingTransformer);
 
     Configuration configuration = ConfigurationBuilder.create();
-    configuration.addConfigurationElement(ConfigurationElementBuilder.create().setName("outputFile").setText("${project" +
-        ".build.directory}/${project.artifactId}-${project.version}-fat.jar"));
     configuration.addConfigurationElement(transformers);
     return configuration;
   }
