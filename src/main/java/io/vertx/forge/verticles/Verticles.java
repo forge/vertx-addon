@@ -189,7 +189,7 @@ public class Verticles {
             .setPackage(topLevelPackage)
             .setAbstract(false)
             .setName(testClassName);
-    testImports.forEach( tImport ->  javaVerticleTestClass.addImport(tImport));
+    testImports.forEach(javaVerticleTestClass::addImport);
 
 
     javaVerticleTestClass
@@ -236,7 +236,7 @@ public class Verticles {
             .addMethod()
             .setName("myAppTest")
             .setBody(
-                    "fail(\"add your test case here\");")
+                    "// add your test case here")
             .setPublic()
             .setReturnTypeVoid();
 
