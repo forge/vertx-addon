@@ -7,15 +7,19 @@
 
 package io.vertx.forge.project;
 
+import java.util.Arrays;
 import java.util.Collections;
 
 import org.jboss.forge.addon.projects.AbstractProjectType;
 import org.jboss.forge.addon.projects.ProjectFacet;
 import org.jboss.forge.addon.ui.context.UINavigationContext;
 import org.jboss.forge.addon.ui.result.NavigationResult;
-import org.jboss.forge.addon.ui.result.Results;
+import org.jboss.forge.addon.ui.result.navigation.NavigationResultBuilder;
+import org.jboss.forge.addon.ui.util.Categories;
+import org.jboss.forge.addon.ui.util.Metadata;
 
 import io.vertx.forge.VertxMavenFacet;
+import io.vertx.forge.commands.AddDependencyCommand;
 import io.vertx.forge.commands.SetupVertxCommand;
 
 /**
@@ -32,7 +36,12 @@ public class VertxProjectType extends AbstractProjectType {
 
     @Override
     public NavigationResult next(UINavigationContext context) {
-	return Results.navigateTo(SetupVertxCommand.class);
+	NavigationResultBuilder builder = NavigationResultBuilder.create();
+	builder.add(
+		Metadata.forCommand(SetupVertxCommand.class).name("Vert.x: Setup").description("Setup Vert.x")
+			.category(Categories.create("vert.x")),
+		Arrays.asList(SetupVertxCommand.class, AddDependencyCommand.class));
+	return builder.build();
     }
 
     @Override
