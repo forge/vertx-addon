@@ -10,6 +10,7 @@ public class VertxDependency extends Dependency {
 
     List<String> keywords = new ArrayList<>();
     String name;
+    String description;
 
     public List<String> getKeywords() {
         return keywords;
@@ -26,6 +27,15 @@ public class VertxDependency extends Dependency {
 
     public VertxDependency setName(String name) {
         this.name = name;
+        return this;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public VertxDependency setDescription(String description) {
+        this.description = description;
         return this;
     }
 }

@@ -32,7 +32,7 @@ public class ListDependenciesCommand extends AbstractVertxCommand {
         UIOutput output = provider.getOutput();
         PrintStream out = output.out();
         for (VertxDependency dep : VertxMavenFacet.getAllDependencies()) {
-            String msg = String.format("%s: %s", dep.getArtifactId(), dep.getName());
+            String msg = String.format("%s: %s (%s)", dep.getArtifactId(), dep.getName(), dep.getDescription());
             out.println(msg);
         }
         return Results.success();
