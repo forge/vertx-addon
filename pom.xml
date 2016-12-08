@@ -22,7 +22,7 @@
 
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-    <version.forge>3.3.3.Final</version.forge>
+    <version.forge>3.4.0.Final</version.forge>
     <version.furnace>2.24.2.Final</version.furnace>
 
   </properties>
@@ -94,7 +94,7 @@
     <dependency>
       <groupId>org.assertj</groupId>
       <artifactId>assertj-core</artifactId>
-      <version>3.5.2</version>
+      <version>3.6.1</version>
       <scope>test</scope>
     </dependency>
     <dependency>
