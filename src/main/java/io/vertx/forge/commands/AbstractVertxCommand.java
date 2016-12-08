@@ -35,7 +35,7 @@ public abstract class AbstractVertxCommand extends AbstractProjectCommand {
 
   @Override
   public UICommandMetadata getMetadata(UIContext context) {
-    return Metadata.forCommand(SetupVertxCommand.class)
+    return Metadata.forCommand(this.getClass())
         .name(name())
         .description(description())
         .category(Categories.create(category()));
