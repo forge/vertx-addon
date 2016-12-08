@@ -54,9 +54,7 @@ public class AddVerticleCommand extends AbstractVertxCommand {
     uiBuilder.add(type);
     uiBuilder.add(main);
 
-    type.setValueChoices(() -> {
-      return asList("java", "javascript", "groovy", "ruby");
-    });
+    type.setValueChoices(() -> asList("java", "javascript", "groovy", "ruby"));
 
 
   }
