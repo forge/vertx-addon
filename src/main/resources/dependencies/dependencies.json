@@ -1,0 +1,459 @@
+[
+  {
+    "name": "Vert.x Web",
+    "groupId": "io.vertx",
+    "artifactId": "vertx-web",
+    "version": "VERTX_VERSION",
+    "keywords": [
+      "web"
+    ]
+  },
+  {
+    "name": "Vert.x Mongo Client",
+    "groupId": "io.vertx",
+    "artifactId": "vertx-mongo-client",
+    "version": "VERTX_VERSION",
+    "keywords": [
+      "mongo",
+      "data",
+      "database",
+      "document"
+    ]
+  },
+  {
+    "name": "Vert.x (async) JDBC Client",
+    "groupId": "io.vertx",
+    "artifactId": "vertx-jdbc-client",
+    "version": "VERTX_VERSION",
+    "keywords": [
+      "jdbc",
+      "data",
+      "database",
+      "h2",
+      "mysql",
+      "posgresql",
+      "hsql",
+      "oracle"
+    ]
+  },
+  {
+    "name": "Vert.x Redis Client",
+    "groupId": "io.vertx",
+    "artifactId": "vertx-redis-client",
+    "version": "VERTX_VERSION",
+    "keywords": [
+      "redis",
+      "data",
+      "database",
+      "nosql"
+    ]
+  },
+  {
+    "name": "Vert.x Mail Client",
+    "groupId": "io.vertx",
+    "artifactId": "vertx-mail-client",
+    "version": "VERTX_VERSION",
+    "keywords": [
+      "mail",
+      "smtp"
+    ]
+  },
+  {
+    "name": "Vert.x STOMP",
+    "groupId": "io.vertx",
+    "artifactId": "vertx-stomp",
+    "version": "VERTX_VERSION",
+    "keywords": [
+      "stomp",
+      "messaging",
+      "integration",
+      "interop"
+    ]
+  },
+  {
+    "name": "Vert.x EventBus Bridge using TCP",
+    "groupId": "io.vertx",
+    "artifactId": "vertx-tcp-eventbus-bridge",
+    "version": "VERTX_VERSION",
+    "keywords": [
+      "eventbus",
+      "bridge",
+      "tcp",
+      "integration",
+      "interop"
+    ]
+  },
+  {
+    "name": "Vert.x - Apache Camel bridge",
+    "groupId": "io.vertx",
+    "artifactId": "vertx-camel-bridge",
+    "version": "VERTX_VERSION",
+    "keywords": [
+      "camel",
+      "bridge",
+      "integration",
+      "integration",
+      "interop"
+    ]
+  },
+  {
+    "name": "Vert.x Bridge with AMQP",
+    "groupId": "io.vertx",
+    "artifactId": "vertx-amqp-bridge",
+    "version": "VERTX_VERSION",
+    "keywords": [
+      "amqp",
+      "bridge",
+      "integration",
+      "integration",
+      "interop"
+    ]
+  },
+  {
+    "name": "Vert.x Bridge with RabbitMQ",
+    "groupId": "io.vertx",
+    "artifactId": "vertx-rabbitmq-bridge",
+    "version": "VERTX_VERSION",
+    "keywords": [
+      "amqp",
+      "bridge",
+      "integration",
+      "integration",
+      "interop"
+    ]
+  },
+  {
+    "name": "Vert.x Authentication Support using JDBC",
+    "groupId": "io.vertx",
+    "artifactId": "vertx-auth-jdbc",
+    "version": "VERTX_VERSION",
+    "keywords": [
+      "authentication",
+      "jdbc"
+    ]
+  },
+  {
+    "name": "Vert.x Authentication Support using JWT",
+    "groupId": "io.vertx",
+    "artifactId": "vertx-auth-jwt",
+    "version": "VERTX_VERSION",
+    "keywords": [
+      "authentication",
+      "jwt"
+    ]
+  },
+  {
+    "name": "Vert.x Authentication Support using Mongo",
+    "groupId": "io.vertx",
+    "artifactId": "vertx-auth-mongo",
+    "version": "VERTX_VERSION",
+    "keywords": [
+      "authentication",
+      "mongo"
+    ]
+  },
+  {
+    "name": "Vert.x Authentication Support using Shiro",
+    "groupId": "io.vertx",
+    "artifactId": "vertx-auth-shiro",
+    "version": "VERTX_VERSION",
+    "keywords": [
+      "authentication",
+      "shiro"
+    ]
+  },
+  {
+    "name": "Vert.x Authentication Support using OAuth 2",
+    "groupId": "io.vertx",
+    "artifactId": "vertx-auth-oauth2",
+    "version": "VERTX_VERSION",
+    "keywords": [
+      "oauth",
+      "oauth2",
+      "authentication"
+    ]
+  },
+  {
+    "name": "Vert.x support for RX Java",
+    "groupId": "io.vertx",
+    "artifactId": "vertx-rx-java",
+    "version": "VERTX_VERSION",
+    "keywords": [
+      "rx",
+      "reactive"
+    ]
+  },
+  {
+    "name": "Vert.x support for JavaScript (Nashorn)",
+    "groupId": "io.vertx",
+    "artifactId": "vertx-lang-js",
+    "version": "VERTX_VERSION",
+    "keywords": [
+      "javascript",
+      "lang",
+      "nashorn"
+    ]
+  },
+  {
+    "name": "Vert.x support for Ruby (JRuby)",
+    "groupId": "io.vertx",
+    "artifactId": "vertx-lang-ruby",
+    "version": "VERTX_VERSION",
+    "keywords": [
+      "ruby",
+      "lang",
+      "jruby"
+    ]
+  },
+  {
+    "name": "Vert.x support for Apache Groovy",
+    "groupId": "io.vertx",
+    "artifactId": "vertx-lang-groovy",
+    "version": "VERTX_VERSION",
+    "keywords": [
+      "groovy",
+      "lang"
+    ]
+  },
+  {
+    "name": "Vert.x Service Discovery",
+    "groupId": "io.vertx",
+    "artifactId": "vertx-service-discovery",
+    "version": "VERTX_VERSION",
+    "keywords": [
+      "discovery",
+      "service",
+      "microservice"
+    ]
+  },
+  {
+    "name": "Vert.x Circuit Breaker",
+    "groupId": "io.vertx",
+    "artifactId": "vertx-circuit-breaker",
+    "version": "VERTX_VERSION",
+    "keywords": [
+      "circuit-breaker",
+      "resilience",
+      "microservice"
+    ]
+  },
+  {
+    "name": "Vert.x Service Discovery for Kubernetes",
+    "groupId": "io.vertx",
+    "artifactId": "vertx-service-discovery-bridge-kubernetes",
+    "version": "VERTX_VERSION",
+    "keywords": [
+      "kubernetes",
+      "service",
+      "discovery",
+      "openshift",
+      "microservice"
+    ]
+  },
+  {
+    "name": "Vert.x Service Discovery for Consul",
+    "groupId": "io.vertx",
+    "artifactId": "vertx-service-discovery-bridge-consul",
+    "version": "VERTX_VERSION",
+    "keywords": [
+      "consul",
+      "service",
+      "discovery",
+      "microservice"
+    ]
+  },
+  {
+    "name": "Vert.x Metrics using Dropwizard",
+    "groupId": "io.vertx",
+    "artifactId": "vertx-dropwizard-metrics",
+    "version": "VERTX_VERSION",
+    "keywords": [
+      "metrics",
+      "dropwizard",
+      "jmx",
+      "monitoring"
+    ]
+  },
+  {
+    "name": "Vert.x Metrics using Hawkular",
+    "groupId": "io.vertx",
+    "artifactId": "vertx-hawkular-metrics",
+    "version": "VERTX_VERSION",
+    "keywords": [
+      "metrics",
+      "hawkular",
+      "monitoring"
+    ]
+  },
+  {
+    "name": "Vert.x Shell",
+    "groupId": "io.vertx",
+    "artifactId": "vertx-shell",
+    "version": "VERTX_VERSION",
+    "keywords": [
+      "shell",
+      "administration",
+      "ssh",
+      "telnet"
+    ]
+  },
+  {
+    "name": "Vert.x Unit",
+    "groupId": "io.vertx",
+    "artifactId": "vertx-unit",
+    "version": "VERTX_VERSION",
+    "scope": "test",
+    "keywords": [
+      "test",
+      "unit"
+    ]
+  },
+  {
+    "name": "Vert.x Cluster Manager based on Hazelcast",
+    "groupId": "io.vertx",
+    "artifactId": "vertx-hazelcast",
+    "version": "VERTX_VERSION",
+    "keywords": [
+      "cluster",
+      "hazelcast",
+      "clustering"
+    ]
+  },
+  {
+    "name": "Vert.x Cluster Manager based on Apache Ignite",
+    "groupId": "io.vertx",
+    "artifactId": "vertx-ignite",
+    "version": "VERTX_VERSION",
+    "keywords": [
+      "cluster",
+      "ignite",
+      "clustering"
+    ]
+  },
+  {
+    "name": "Vert.x Cluster Manager based on Apache Zookeeper",
+    "groupId": "io.vertx",
+    "artifactId": "vertx-zookeeper",
+    "version": "VERTX_VERSION",
+    "keywords": [
+      "cluster",
+      "zookeeper",
+      "clustering"
+    ]
+  },
+  {
+    "name": "Vert.x Web Template Engine based on Pebble",
+    "groupId": "io.vertx",
+    "artifactId": "vertx-web-templ-pebble",
+    "version": "VERTX_VERSION",
+    "classifier": "shaded",
+    "keywords": [
+      "template",
+      "pebble",
+      "web"
+    ]
+  },
+  {
+    "name": "Vert.x Web Template Engine based on Apache Freemarker",
+    "groupId": "io.vertx",
+    "artifactId": "vertx-web-templ-freemarker",
+    "version": "VERTX_VERSION",
+    "classifier": "shaded",
+    "keywords": [
+      "template",
+      "freemarker",
+      "web"
+    ]
+  },
+  {
+    "name": "Vert.x Web Template Engine based on Thymeleaf",
+    "groupId": "io.vertx",
+    "artifactId": "vertx-web-templ-thymeleaf",
+    "version": "VERTX_VERSION",
+    "classifier": "shaded",
+    "keywords": [
+      "template",
+      "thymeleaf",
+      "web"
+    ]
+  },
+  {
+    "name": "Vert.x Web Template Engine based on Handlebars",
+    "groupId": "io.vertx",
+    "artifactId": "vertx-web-templ-handlebars",
+    "version": "VERTX_VERSION",
+    "classifier": "shaded",
+    "keywords": [
+      "template",
+      "handlebars",
+      "web"
+    ]
+  },
+  {
+    "name": "Vert.x Web Template Engine based on Jade",
+    "groupId": "io.vertx",
+    "artifactId": "vertx-web-templ-jade",
+    "version": "VERTX_VERSION",
+    "classifier": "shaded",
+    "keywords": [
+      "template",
+      "jade",
+      "web"
+    ]
+  },
+  {
+    "name": "Vert.x Web Template Engine based on MVEL",
+    "groupId": "io.vertx",
+    "artifactId": "vertx-web-templ-mvel",
+    "version": "VERTX_VERSION",
+    "classifier": "shaded",
+    "keywords": [
+      "template",
+      "mvel",
+      "web"
+    ]
+  },
+  {
+    "name": "Vert.x (async) RPC service proxies",
+    "groupId": "io.vertx",
+    "artifactId": "vertx-service-proxy",
+    "version": "VERTX_VERSION",
+    "keywords": [
+      "rpc",
+      "service",
+      "proxy"
+    ]
+  },
+  {
+    "name": "Vert.x Service Factory using Apache Maven",
+    "groupId": "io.vertx",
+    "artifactId": "vertx-maven-service-factory",
+    "version": "VERTX_VERSION",
+    "keywords": [
+      "maven",
+      "service",
+      "factory"
+    ]
+  },
+  {
+    "name": "Vert.x Service Factory",
+    "groupId": "io.vertx",
+    "artifactId": "vertx-service-factory",
+    "version": "VERTX_VERSION",
+    "keywords": [
+      "factory",
+      "service"
+    ]
+  },
+  {
+    "name": "Vert.x Service Factory using HTTP",
+    "groupId": "io.vertx",
+    "artifactId": "vertx-http-service-factory",
+    "version": "VERTX_VERSION",
+    "keywords": [
+      "http",
+      "service",
+      "factory"
+    ]
+  }
+]

@@ -66,18 +66,15 @@ public class ForgeUtils {
     MavenPluginFacet plugins = project.getFacet(MavenPluginFacet.class);
     List<MavenPlugin> list = plugins.listConfiguredPlugins();
     Optional<MavenPlugin> maybePlugin = list.stream().filter(plugin -> plugin.getCoordinate().getArtifactId().equalsIgnoreCase(artifactId)).findFirst();
-    if (maybePlugin.isPresent()) {
-      return maybePlugin.get();
-    }
-    return null;
+    return maybePlugin.orElse(null);
   }
 
   public static Dependency getOrAddDependency(Project project, String groupId, String artifactId) {
-    return getOrAddDependency(project, groupId, artifactId, null, null);
+    return getOrAddDependency(project, groupId, artifactId, null, null, null);
   }
 
   public static Dependency getOrAddDependency(Project project, String groupId, String artifactId,
-                                              String version, String scope) {
+                                              String version, String classifier, String scope) {
     DependencyFacet dependencies = project.getFacet(DependencyFacet.class);
     Optional<Dependency> found = dependencies.getEffectiveDependencies().stream().filter(dep ->
         dep.getCoordinate().getGroupId().equalsIgnoreCase(groupId)
@@ -98,6 +95,10 @@ public class ForgeUtils {
     if (scope != null) {
       dependency.setScopeType(scope);
     }
+    if (classifier != null  && ! classifier.isEmpty()) {
+      dependency.setClassifier(classifier);
+    }
+
     dependencies.addDirectDependency(dependency);
 
     return dependency;
