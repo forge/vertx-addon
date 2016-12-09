@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>me.escoffier.forge</groupId>
   <artifactId>vertx-forge-addon</artifactId>
-  <version>1.0.1-SNAPSHOT</version>
+  <version>1.0.1</version>
 
   <description>A JBoss Forge add-on for Eclipse Vert.x</description>
   <url>https://github.com/cescoffier/vertx-forge-addon</url>
@@ -251,7 +251,7 @@
     <url>https://github.com/cescoffiervertx-forge-addon</url>
     <connection>https://github.com/cescoffier/vertx-forge-addon.git</connection>
     <developerConnection>scm:git:git@github.com:cescoffier/vertx-forge-addon.git</developerConnection>
-    <tag>HEAD</tag>
+    <tag>vertx-forge-addon-1.0.1</tag>
   </scm>
 
   <inceptionYear>2016</inceptionYear>
