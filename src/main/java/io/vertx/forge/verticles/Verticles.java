@@ -67,7 +67,7 @@ public class Verticles {
 
     // Update pom if it's main
     if (isMain) {
-      ForgeUtils.addPropertyToProject(project, "verticle.main", verticleName);
+      ForgeUtils.addPropertyToProject(project, "vertx.verticle", verticleName);
     }
 
     // Add groovy dependency if not there
@@ -90,7 +90,7 @@ public class Verticles {
 
     // Update pom if it's main
     if (isMain) {
-      ForgeUtils.addPropertyToProject(project, "verticle.main", verticleName);
+      ForgeUtils.addPropertyToProject(project, "vertx.verticle", verticleName);
     }
 
     // Add groovy dependency if not there
@@ -114,7 +114,7 @@ public class Verticles {
 
     // Update pom if it's main
     if (isMain) {
-      ForgeUtils.addPropertyToProject(project, "verticle.main", verticleName);
+      ForgeUtils.addPropertyToProject(project, "vertx.verticle", verticleName);
     }
 
     // Add groovy dependency if not there
@@ -152,7 +152,7 @@ public class Verticles {
     JavaResource resource = source.saveJavaSource(mainVerticle.getEnclosingType());
 
     if (isMain) {
-      ForgeUtils.addPropertyToProject(project, "verticle.main", topLevelPackage + "." + className);
+      ForgeUtils.addPropertyToProject(project, "vertx.verticle", topLevelPackage + "." + className);
     }
     addJavaVerticleTest(project,packageName,className);
     return resource.toString();

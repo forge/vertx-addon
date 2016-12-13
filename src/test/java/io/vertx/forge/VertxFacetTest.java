@@ -37,16 +37,15 @@ import static org.assertj.core.data.MapEntry.entry;
 @RunWith(Arquillian.class)
 public class VertxFacetTest {
 
-  String version = "3.3.3";
+  String version = ForgeUtils.loadVersions().getProperty("vertx");
 
   @Deployment
   @AddonDependencies
   public static AddonArchive getDeployment() {
-    AddonArchive archive = ShrinkWrap
+    return ShrinkWrap
         .create(AddonArchive.class)
         .addPackages(true, "org.assertj.core")
         .addBeansXML();
-    return archive;
   }
 
   @Inject
@@ -86,15 +85,13 @@ public class VertxFacetTest {
 
     // Check dependencies
     checkDependency(dependencies, "io.vertx", "vertx-core", null, null);
-    checkDependency(dependencies, "io.vertx", "vertx-hazelcast", null, null);
     checkDependency(dependencies, "io.vertx", "vertx-unit", null, "test");
     checkDependency(dependencies, "junit", "junit", "4.12", "test");
-    assertThat(dependencies.getDependencies()).hasSize(4);
+    assertThat(dependencies.getDependencies()).hasSize(3);
 
     // Check maven compiler
     hasPlugin(plugins, "maven-compiler-plugin");
-    hasPlugin(plugins, "exec-maven-plugin");
-    hasPlugin(plugins, "maven-shade-plugin");
+    hasPlugin(plugins, "vertx-maven-plugin");
   }
 
   @Test
@@ -120,15 +117,13 @@ public class VertxFacetTest {
     // Check dependencies
     checkDependency(dependencies, "commons-io", "commons-io", "2.4", null);
     checkDependency(dependencies, "io.vertx", "vertx-core", null, null);
-    checkDependency(dependencies, "io.vertx", "vertx-hazelcast", null, null);
     checkDependency(dependencies, "io.vertx", "vertx-unit", null, "test");
     checkDependency(dependencies, "junit", "junit", "4.12", "test");
-    assertThat(dependencies.getDependencies()).hasSize(5);
+    assertThat(dependencies.getDependencies()).hasSize(4);
 
     // Check maven compiler
     hasPlugin(plugins, "maven-compiler-plugin");
-    hasPlugin(plugins, "exec-maven-plugin");
-    hasPlugin(plugins, "maven-shade-plugin");
+    hasPlugin(plugins, "vertx-maven-plugin");
   }
 
   @Test
@@ -153,15 +148,13 @@ public class VertxFacetTest {
 
     // Check dependencies
     checkDependency(dependencies, "io.vertx", "vertx-core", "3.1.0", null);
-    checkDependency(dependencies, "io.vertx", "vertx-hazelcast", null, null);
     checkDependency(dependencies, "io.vertx", "vertx-unit", null, "test");
     checkDependency(dependencies, "junit", "junit", "4.12", "test");
-    assertThat(dependencies.getDependencies()).hasSize(4);
+    assertThat(dependencies.getDependencies()).hasSize(3);
 
     // Check maven compiler
     hasPlugin(plugins, "maven-compiler-plugin");
-    hasPlugin(plugins, "exec-maven-plugin");
-    hasPlugin(plugins, "maven-shade-plugin");
+    hasPlugin(plugins, "vertx-maven-plugin");
   }
 
   @Test
@@ -186,15 +179,13 @@ public class VertxFacetTest {
 
     // Check dependencies
     checkDependency(dependencies, "io.vertx", "vertx-core", null, null);
-    checkDependency(dependencies, "io.vertx", "vertx-hazelcast", null, null);
     checkDependency(dependencies, "io.vertx", "vertx-unit", null, "test");
     checkDependency(dependencies, "junit", "junit", "4.12", "test");
-    assertThat(dependencies.getDependencies()).hasSize(4);
+    assertThat(dependencies.getDependencies()).hasSize(3);
 
     // Check maven compiler
     hasPlugin(plugins, "maven-compiler-plugin");
-    hasPlugin(plugins, "exec-maven-plugin");
-    hasPlugin(plugins, "maven-shade-plugin");
+    hasPlugin(plugins, "vertx-maven-plugin");
   }
 
   @Test
@@ -220,15 +211,13 @@ public class VertxFacetTest {
 
     // Check dependencies
     checkDependency(dependencies, "io.vertx", "vertx-core", null, null);
-    checkDependency(dependencies, "io.vertx", "vertx-hazelcast", null, null);
     checkDependency(dependencies, "io.vertx", "vertx-unit", null, "test");
     checkDependency(dependencies, "junit", "junit", "4.12", "test");
-    assertThat(dependencies.getDependencies()).hasSize(4);
+    assertThat(dependencies.getDependencies()).hasSize(3);
 
     // Check maven compiler
     hasPlugin(plugins, "maven-compiler-plugin");
-    hasPlugin(plugins, "exec-maven-plugin");
-    hasPlugin(plugins, "maven-shade-plugin");
+    hasPlugin(plugins, "vertx-maven-plugin");
   }
 
   /**
@@ -260,12 +249,12 @@ public class VertxFacetTest {
     verticles.createNewVerticle(project, "MyVerticle", "io.acme", "java", false);
     assertThat(new File(root, "src/main/java/io/acme/MyVerticle.java")).isFile();
     assertThat(project.getFacet(MavenFacet.class).getProperties())
-        .contains(entry("verticle.main", "unknown.MainVerticle"));
+        .contains(entry("vertx.verticle", "unknown.MainVerticle"));
 
     verticles.createNewVerticle(project, "MyMainVerticle.java", "io.acme", "java", true);
     assertThat(new File(root, "src/main/java/io/acme/MyMainVerticle.java")).isFile();
     assertThat(project.getFacet(MavenFacet.class).getProperties())
-        .contains(entry("verticle.main", "io.acme.MyMainVerticle"));
+        .contains(entry("vertx.verticle", "io.acme.MyMainVerticle"));
   }
 
 
@@ -279,13 +268,13 @@ public class VertxFacetTest {
     assertThat(groovy1).endsWith("src/main/groovy/my-verticle.groovy");
     assertThat(new File(root, "src/main/groovy/my-verticle.groovy")).isFile();
     assertThat(project.getFacet(MavenFacet.class).getProperties())
-        .contains(entry("verticle.main", "unknown.MainVerticle"));
+        .contains(entry("vertx.verticle", "unknown.MainVerticle"));
 
     String groovy2 = verticles.createNewVerticle(project, "my-main-verticle.groovy", null, "groovy", true);
     assertThat(groovy2).endsWith("src/main/groovy/my-main-verticle.groovy");
     assertThat(new File(root, "src/main/groovy/my-main-verticle.groovy")).isFile();
     assertThat(project.getFacet(MavenFacet.class).getProperties())
-        .contains(entry("verticle.main", "my-main-verticle.groovy"));
+        .contains(entry("vertx.verticle", "my-main-verticle.groovy"));
   }
 
   @Test
@@ -298,13 +287,13 @@ public class VertxFacetTest {
     assertThat(js1).endsWith("src/main/javascript/my-verticle.js");
     assertThat(new File(root, "src/main/javascript/my-verticle.js")).isFile();
     assertThat(project.getFacet(MavenFacet.class).getProperties())
-        .contains(entry("verticle.main", "unknown.MainVerticle"));
+        .contains(entry("vertx.verticle", "unknown.MainVerticle"));
 
     String js2 = verticles.createNewVerticle(project, "my-main-verticle.js", null, "javascript", true);
     assertThat(js2).endsWith("src/main/javascript/my-main-verticle.js");
     assertThat(new File(root, "src/main/javascript/my-main-verticle.js")).isFile();
     assertThat(project.getFacet(MavenFacet.class).getProperties())
-        .contains(entry("verticle.main", "my-main-verticle.js"));
+        .contains(entry("vertx.verticle", "my-main-verticle.js"));
   }
 
 
@@ -318,7 +307,7 @@ public class VertxFacetTest {
     assertThat(ruby).endsWith("src/main/ruby/my-ruby-verticle.rb");
     assertThat(new File(root, "src/main/ruby/my-ruby-verticle.rb")).isFile();
     assertThat(project.getFacet(MavenFacet.class).getProperties())
-        .contains(entry("verticle.main", "unknown.MainVerticle"));
+        .contains(entry("vertx.verticle", "unknown.MainVerticle"));
   }
 
   @Test
@@ -331,7 +320,7 @@ public class VertxFacetTest {
     assertThat(ruby).endsWith("src/main/ruby/my-ruby-verticle.rb");
     assertThat(new File(root, "src/main/ruby/my-ruby-verticle.rb")).isFile();
     assertThat(project.getFacet(MavenFacet.class).getProperties())
-        .contains(entry("verticle.main", "my-ruby-verticle.rb"));
+        .contains(entry("vertx.verticle", "my-ruby-verticle.rb"));
   }
 
   @Test
@@ -344,24 +333,24 @@ public class VertxFacetTest {
     assertThat(ruby).endsWith("src/main/ruby/my-ruby-verticle.rb");
     assertThat(new File(root, "src/main/ruby/my-ruby-verticle.rb")).isFile();
     assertThat(project.getFacet(MavenFacet.class).getProperties())
-        .contains(entry("verticle.main", "my-ruby-verticle.rb"));
+        .contains(entry("vertx.verticle", "my-ruby-verticle.rb"));
 
     String js2 = verticles.createNewVerticle(project, "my-main-verticle.js", null, "javascript", true);
     assertThat(js2).endsWith("src/main/javascript/my-main-verticle.js");
     assertThat(new File(root, "src/main/javascript/my-main-verticle.js")).isFile();
     assertThat(project.getFacet(MavenFacet.class).getProperties())
-        .contains(entry("verticle.main", "my-main-verticle.js"));
+        .contains(entry("vertx.verticle", "my-main-verticle.js"));
 
     String groovy2 = verticles.createNewVerticle(project, "my-main-verticle.groovy", null, "groovy", true);
     assertThat(groovy2).endsWith("src/main/groovy/my-main-verticle.groovy");
     assertThat(new File(root, "src/main/groovy/my-main-verticle.groovy")).isFile();
     assertThat(project.getFacet(MavenFacet.class).getProperties())
-        .contains(entry("verticle.main", "my-main-verticle.groovy"));
+        .contains(entry("vertx.verticle", "my-main-verticle.groovy"));
 
     verticles.createNewVerticle(project, "MyMainVerticle.java", "io.acme", "java", true);
     assertThat(new File(root, "src/main/java/io/acme/MyMainVerticle.java")).isFile();
     assertThat(project.getFacet(MavenFacet.class).getProperties())
-        .contains(entry("verticle.main", "io.acme.MyMainVerticle"));
+        .contains(entry("vertx.verticle", "io.acme.MyMainVerticle"));
   }
 
   private void hasPlugin(MavenPluginFacet plugins, String artifactId) {
