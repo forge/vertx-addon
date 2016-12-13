@@ -12,15 +12,29 @@ import org.jboss.forge.addon.maven.projects.MavenPluginFacet;
 import org.jboss.forge.addon.projects.Project;
 import org.jboss.forge.addon.projects.facets.DependencyFacet;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Properties;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.util.*;
 
 /**
  * @author <a href="http://escoffier.me">Clement Escoffier</a>
  */
 public class ForgeUtils {
+
+  public static Properties loadVersions() {
+    URL url = ForgeUtils.class.getClassLoader().getResource("dependencies-version.properties");
+    Objects.requireNonNull(url);
+
+    Properties properties = new Properties();
+    try (InputStream stream = url.openStream()) {
+      properties.load(stream);
+    } catch (IOException e) {
+      throw new RuntimeException("Unble to read the 'dependencies-version.properties' file", e);
+    }
+
+    return properties;
+  }
 
   public static Coordinate coordinate(String group, String artifact) {
     return CoordinateBuilder.create().setGroupId(group).setArtifactId(artifact);
