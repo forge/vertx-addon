@@ -26,7 +26,7 @@
     <version.furnace>2.24.2.Final</version.furnace>
 
     <!-- Properties used to configure the addon -->
-    <vertx-maven-plugin.version>1.0.0</vertx-maven-plugin.version>
+    <vertx-maven-plugin.version>1.0.1</vertx-maven-plugin.version>
     <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
     <vertx.version>3.3.3</vertx.version>
     <junit.version>4.12</junit.version>
@@ -39,7 +39,7 @@
     <maven-gpg-plugin.version>1.5</maven-gpg-plugin.version>
 
     <assertj.version>3.6.1</assertj.version>
-    <jackson.version>2.8.5</jackson.version>
+    <jackson.version>2.8.6</jackson.version>
   </properties>
   <dependencyManagement>
     <dependencies>
