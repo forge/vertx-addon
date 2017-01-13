@@ -1,8 +1,7 @@
 package io.vertx.forge.commands;
 
 import io.vertx.forge.VertxMavenFacet;
-import io.vertx.forge.dependencies.Dependency;
-import io.vertx.forge.dependencies.VertxDependency;
+import io.vertx.forge.config.VertxDependency;
 import org.jboss.forge.addon.facets.constraints.FacetConstraint;
 import org.jboss.forge.addon.projects.Project;
 import org.jboss.forge.addon.projects.Projects;
@@ -46,7 +45,7 @@ public class RemoveDependencyCommand extends AbstractVertxCommand {
         if (uiContext.getProvider().isGUI()) {
             dependencies.setItemLabelConverter(VertxDependency::getName);
         } else {
-            dependencies.setItemLabelConverter(Dependency::getArtifactId);
+            dependencies.setItemLabelConverter(VertxDependency::getArtifactId);
         }
 
         Project project = Projects.getSelectedProject(getProjectFactory(), uiContext);

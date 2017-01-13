@@ -1,9 +1,7 @@
 package io.vertx.forge;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import io.vertx.forge.dependencies.VertxDependency;
+import io.vertx.forge.config.VertxDependency;
 import io.vertx.forge.verticles.Verticles;
-import org.apache.commons.io.IOUtils;
 import org.apache.maven.model.Model;
 import org.jboss.forge.addon.dependencies.Coordinate;
 import org.jboss.forge.addon.dependencies.Dependency;
@@ -23,10 +21,10 @@ import org.jboss.forge.addon.projects.facets.DependencyFacet;
 import org.jboss.forge.addon.resource.ResourceFactory;
 
 import javax.inject.Inject;
-import java.io.IOException;
-import java.net.URL;
 import java.util.*;
 import java.util.stream.Collectors;
+
+import static io.vertx.forge.config.VertxAddonConfiguration.config;
 
 /**
  * @author <a href="http://escoffier.me">Clement Escoffier</a>
@@ -36,7 +34,6 @@ import java.util.stream.Collectors;
 )
 public class VertxMavenFacet extends AbstractFacet<Project> implements ProjectFacet {
 
-    private static final Properties VERSIONS;
     private final static Coordinate VERTX_MAVEN_PLUGIN;
     private final static Coordinate JUNIT_DEPENDENCY;
     private static final String VERTX_VERSION;
@@ -44,12 +41,10 @@ public class VertxMavenFacet extends AbstractFacet<Project> implements ProjectFa
     public static final String VERTX_VERSION_PROPERTY = "vertx.version";
 
     static {
-        VERSIONS = ForgeUtils.loadVersions();
         VERTX_MAVEN_PLUGIN = CoordinateBuilder
-            .create("io.fabric8:vertx-maven-plugin:" + VERSIONS.getProperty("vertx-maven-plugin"));
-
-        JUNIT_DEPENDENCY = CoordinateBuilder.create("junit:junit:" + VERSIONS.getProperty("junit"));
-        VERTX_VERSION = VERSIONS.getProperty("vertx");
+            .create("io.fabric8:vertx-maven-plugin:" + config().getVersion("vertx-maven-plugin"));
+        JUNIT_DEPENDENCY = CoordinateBuilder.create("junit:junit:" + config().getVersion("junit"));
+        VERTX_VERSION = config().getVersion();
     }
 
     @Inject
@@ -213,23 +208,22 @@ public class VertxMavenFacet extends AbstractFacet<Project> implements ProjectFa
 
 
     public void addDependencies(List<VertxDependency> deps) {
-        deps.forEach(dep ->
-            ForgeUtils.getOrAddDependency(getFaceted(),
-                dep.getGroupId(), dep.getArtifactId(), null, dep.getClassifier(),
-                dep.getScope()));
+        deps.forEach(dep -> {
+            if (dep.getVersion() != null  && dep.getVersion().equalsIgnoreCase(vertxVersion)) {
+                ForgeUtils.getOrAddDependency(getFaceted(),
+                    dep.getGroupId(), dep.getArtifactId(), null, dep.getClassifier(),
+                    dep.getScope());
+            } else {
+                ForgeUtils.getOrAddDependency(getFaceted(),
+                    dep.getGroupId(), dep.getArtifactId(), dep.getVersion(), dep.getClassifier(),
+                    dep.getScope());
+            }
+        });
         save();
     }
 
-    public static Collection<VertxDependency> getAllDependencies() {
-        ObjectMapper mapper = new ObjectMapper();
-        URL url = VertxMavenFacet.class.getResource("/dependencies/dependencies.json");
-        try {
-            String content = IOUtils.toString(url);
-            VertxDependency[] value = mapper.readValue(content, VertxDependency[].class);
-            return Arrays.asList(value);
-        } catch (IOException e) {
-            throw new RuntimeException("Cannot read the dependencies.json file", e);
-        }
+    public static List<VertxDependency> getAllDependencies() {
+        return config().getDependencies();
     }
 
     public Collection<VertxDependency> getNotUsedDependencies() {

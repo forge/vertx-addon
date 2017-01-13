@@ -1,0 +1,297 @@
+{
+  "version": "3.3.3",
+
+  "availableVersions": [
+    "3.0.0", "3.1.0", "3.2.1", "3.3.2", "3.3.3"
+  ],
+
+  "dependencies": [
+    {
+      "name": "Vert.x Web",
+      "description": "Vert.x Web let you build modern web applications",
+      "groupId": "io.vertx",
+      "artifactId": "vertx-web",
+      "version": "VERTX_VERSION"
+    },
+    {
+      "name": "Vert.x Mongo Client",
+      "description": "Client to interact with MongoDB databases",
+      "groupId": "io.vertx",
+      "artifactId": "vertx-mongo-client",
+      "version": "VERTX_VERSION"
+    },
+    {
+      "name": "Vert.x (async) JDBC Client",
+      "description": "Client to interact with JDBC databases",
+      "groupId": "io.vertx",
+      "artifactId": "vertx-jdbc-client",
+      "version": "VERTX_VERSION"
+    },
+    {
+      "name": "Vert.x Redis Client",
+      "description": "Client to interact with Redis databases",
+      "groupId": "io.vertx",
+      "artifactId": "vertx-redis-client",
+      "version": "VERTX_VERSION"
+    },
+    {
+      "name": "Vert.x Mail Client",
+      "description": "Client to send mail using a SMTP server",
+      "groupId": "io.vertx",
+      "artifactId": "vertx-mail-client",
+      "version": "VERTX_VERSION"
+    },
+    {
+      "name": "Vert.x STOMP",
+      "description": "Client to interact with STOMP broker, and server acting as a STOMP broker",
+      "groupId": "io.vertx",
+      "artifactId": "vertx-stomp",
+      "version": "VERTX_VERSION"
+    },
+    {
+      "name": "Vert.x EventBus Bridge using TCP",
+      "description": "Event Bus bridge to connect TCP-capable applications to your Vert.x application",
+      "groupId": "io.vertx",
+      "artifactId": "vertx-tcp-eventbus-bridge",
+      "version": "VERTX_VERSION"
+    },
+    {
+      "name": "Vert.x - Apache Camel bridge",
+      "description": "Bridge to ease the integration with any system thanks to Apache Camel routes",
+      "groupId": "io.vertx",
+      "artifactId": "vertx-camel-bridge",
+      "version": "VERTX_VERSION"
+    },
+    {
+      "name": "Vert.x Bridge with AMQP",
+      "description": "Component to connect the event bus with AMQP",
+      "groupId": "io.vertx",
+      "artifactId": "vertx-amqp-bridge",
+      "version": "VERTX_VERSION"
+    },
+    {
+      "name": "Vert.x Client for RabbitMQ",
+      "description": "Component to connect with RabbitMQ",
+      "groupId": "io.vertx",
+      "artifactId": "vertx-rabbitmq-client",
+      "version": "VERTX_VERSION"
+    },
+    {
+      "name": "Vert.x Authentication Support using JDBC",
+      "description": "Manage authentication using a JDBC database",
+      "groupId": "io.vertx",
+      "artifactId": "vertx-auth-jdbc",
+      "version": "VERTX_VERSION"
+    },
+    {
+      "name": "Vert.x Authentication Support using JWT",
+      "description": "Manage authentication using JWT",
+      "groupId": "io.vertx",
+      "artifactId": "vertx-auth-jwt",
+      "version": "VERTX_VERSION"
+    },
+    {
+      "name": "Vert.x Authentication Support using Mongo",
+      "description": "Manage authentication using a Mongo database",
+      "groupId": "io.vertx",
+      "artifactId": "vertx-auth-mongo",
+      "version": "VERTX_VERSION"
+    },
+    {
+      "name": "Vert.x Authentication Support using Shiro",
+      "description": "Manage authentication using Apache Shiro",
+      "groupId": "io.vertx",
+      "artifactId": "vertx-auth-shiro",
+      "version": "VERTX_VERSION"
+    },
+    {
+      "name": "Vert.x Authentication Support using OAuth 2",
+      "description": "Manage authentication using an OAuth2 provider",
+      "groupId": "io.vertx",
+      "artifactId": "vertx-auth-oauth2",
+      "version": "VERTX_VERSION"
+    },
+    {
+      "name": "Vert.x support for RX Java",
+      "description": "Provide RX-Java support for Vert.x",
+      "groupId": "io.vertx",
+      "artifactId": "vertx-rx-java",
+      "version": "VERTX_VERSION"
+    },
+    {
+      "name": "Vert.x support for JavaScript (Nashorn)",
+      "description": "Provide JavaScript support for Vert.x",
+      "groupId": "io.vertx",
+      "artifactId": "vertx-lang-js",
+      "version": "VERTX_VERSION"
+    },
+    {
+      "name": "Vert.x support for Ruby (JRuby)",
+      "description": "Provide Ruby support for Vert.x",
+      "groupId": "io.vertx",
+      "artifactId": "vertx-lang-ruby",
+      "version": "VERTX_VERSION"
+    },
+    {
+      "name": "Vert.x support for Apache Groovy",
+      "description": "Provide Groovy support for Vert.x",
+      "groupId": "io.vertx",
+      "artifactId": "vertx-lang-groovy",
+      "version": "VERTX_VERSION"
+    },
+    {
+      "name": "Vert.x Service Discovery",
+      "description": "Provide Service Discovery for Vert.x applications",
+      "groupId": "io.vertx",
+      "artifactId": "vertx-service-discovery",
+      "version": "VERTX_VERSION"
+    },
+    {
+      "name": "Vert.x Circuit Breaker",
+      "description": "Provide a circuit breaker implementation to make applications more resilient",
+      "groupId": "io.vertx",
+      "artifactId": "vertx-circuit-breaker",
+      "version": "VERTX_VERSION"
+    },
+    {
+      "name": "Vert.x Service Discovery for Kubernetes",
+      "description": "Import Kubernetes services inside the Vert.x service discovery",
+      "groupId": "io.vertx",
+      "artifactId": "vertx-service-discovery-bridge-kubernetes",
+      "version": "VERTX_VERSION"
+    },
+    {
+      "name": "Vert.x Service Discovery for Consul",
+      "description": "Import Consul services inside the Vert.x service discovery",
+      "groupId": "io.vertx",
+      "artifactId": "vertx-service-discovery-bridge-consul",
+      "version": "VERTX_VERSION"
+    },
+    {
+      "name": "Vert.x Metrics using Dropwizard",
+      "description": "Expose Vert.x metrics in Dropwizard (and so support JMX and Graphite)",
+      "groupId": "io.vertx",
+      "artifactId": "vertx-dropwizard-metrics",
+      "version": "VERTX_VERSION"
+    },
+    {
+      "name": "Vert.x Metrics using Hawkular",
+      "description": "Expose Vert.x metrics in Hawkular",
+      "groupId": "io.vertx",
+      "artifactId": "vertx-hawkular-metrics",
+      "version": "VERTX_VERSION"
+    },
+    {
+      "name": "Vert.x Shell",
+      "description": "Let you interact with Vert.x applications using an interactive shell",
+      "groupId": "io.vertx",
+      "artifactId": "vertx-shell",
+      "version": "VERTX_VERSION"
+    },
+    {
+      "name": "Vert.x Unit",
+      "description": "Ease the implementation of asynchronous unit test",
+      "groupId": "io.vertx",
+      "artifactId": "vertx-unit",
+      "version": "VERTX_VERSION",
+      "scope": "test"
+    },
+    {
+      "name": "Vert.x Cluster Manager based on Hazelcast",
+      "description": "Manage Vert.x cluster using Hazelcast",
+      "groupId": "io.vertx",
+      "artifactId": "vertx-hazelcast",
+      "version": "VERTX_VERSION"
+    },
+    {
+      "name": "Vert.x Cluster Manager based on Apache Ignite",
+      "description": "Manage Vert.x cluster using Apache Ignite",
+      "groupId": "io.vertx",
+      "artifactId": "vertx-ignite",
+      "version": "VERTX_VERSION"
+    },
+    {
+      "name": "Vert.x Cluster Manager based on Apache Zookeeper",
+      "description": "Manage Vert.x cluster using Apache Zookeeper",
+      "groupId": "io.vertx",
+      "artifactId": "vertx-zookeeper",
+      "version": "VERTX_VERSION"
+    },
+    {
+      "name": "Vert.x Web Template Engine based on Pebble",
+      "description": "Provide support for Pebble templates",
+      "groupId": "io.vertx",
+      "artifactId": "vertx-web-templ-pebble",
+      "version": "VERTX_VERSION",
+      "classifier": "shaded"
+    },
+    {
+      "name": "Vert.x Web Template Engine based on Apache Freemarker",
+      "description": "Provide support for Freemarker templates",
+      "groupId": "io.vertx",
+      "artifactId": "vertx-web-templ-freemarker",
+      "version": "VERTX_VERSION",
+      "classifier": "shaded"
+    },
+    {
+      "name": "Vert.x Web Template Engine based on Thymeleaf",
+      "description": "Provide support for Thymeleaf templates",
+      "groupId": "io.vertx",
+      "artifactId": "vertx-web-templ-thymeleaf",
+      "version": "VERTX_VERSION",
+      "classifier": "shaded"
+    },
+    {
+      "name": "Vert.x Web Template Engine based on Handlebars",
+      "description": "Provide support for Handlebars templates",
+      "groupId": "io.vertx",
+      "artifactId": "vertx-web-templ-handlebars",
+      "version": "VERTX_VERSION",
+      "classifier": "shaded"
+    },
+    {
+      "name": "Vert.x Web Template Engine based on Jade",
+      "description": "Provide support for Jade templates",
+      "groupId": "io.vertx",
+      "artifactId": "vertx-web-templ-jade",
+      "version": "VERTX_VERSION",
+      "classifier": "shaded"
+    },
+    {
+      "name": "Vert.x Web Template Engine based on MVEL",
+      "description": "Provide support for MVEL templates",
+      "groupId": "io.vertx",
+      "artifactId": "vertx-web-templ-mvel",
+      "version": "VERTX_VERSION",
+      "classifier": "shaded"
+    },
+    {
+      "name": "Vert.x (async) RPC service proxies",
+      "description": "Generate clients and stub for RPC services exposed on the eventbus",
+      "groupId": "io.vertx",
+      "artifactId": "vertx-service-proxy",
+      "version": "VERTX_VERSION"
+    },
+    {
+      "name": "Vert.x Service Factory using Apache Maven",
+      "description": "Deploy Vert.x verticles and services using Apache Maven",
+      "groupId": "io.vertx",
+      "artifactId": "vertx-maven-service-factory",
+      "version": "VERTX_VERSION"
+    },
+    {
+      "name": "Vert.x Service Factory",
+      "description": "Deploy Vert.x services",
+      "groupId": "io.vertx",
+      "artifactId": "vertx-service-factory",
+      "version": "VERTX_VERSION"
+    },
+    {
+      "name": "Vert.x Service Factory using HTTP",
+      "description": "Deploy Vert.x verticles and services using HTTP",
+      "groupId": "io.vertx",
+      "artifactId": "vertx-http-service-factory",
+      "version": "VERTX_VERSION"
+    }
+  ]
+}

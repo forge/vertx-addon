@@ -22,19 +22,6 @@ import java.util.*;
  */
 public class ForgeUtils {
 
-  public static Properties loadVersions() {
-    URL url = ForgeUtils.class.getClassLoader().getResource("dependencies-version.properties");
-    Objects.requireNonNull(url);
-
-    Properties properties = new Properties();
-    try (InputStream stream = url.openStream()) {
-      properties.load(stream);
-    } catch (IOException e) {
-      throw new RuntimeException("Unble to read the 'dependencies-version.properties' file", e);
-    }
-
-    return properties;
-  }
 
   public static Coordinate coordinate(String group, String artifact) {
     return CoordinateBuilder.create().setGroupId(group).setArtifactId(artifact);

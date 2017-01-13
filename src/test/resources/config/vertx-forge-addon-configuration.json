@@ -1,0 +1,21 @@
+{
+  "version": "3.3.1-product",
+  "communityVersion": "3.3.2",
+
+  "dependencies": [
+    {
+      "name": "Vert.x Web",
+      "description": "Vert.x Web let you build modern web applications",
+      "groupId": "io.vertx",
+      "artifactId": "vertx-web",
+      "version": "VERTX_VERSION"
+    },
+    {
+      "name": "Vert.x Mongo Client",
+      "description": "Client to interact with MongoDB databases",
+      "groupId": "io.vertx",
+      "artifactId": "vertx-mongo-client",
+      "version": "VERTX_COMMUNITY_VERSION"
+    }
+  ]
+}

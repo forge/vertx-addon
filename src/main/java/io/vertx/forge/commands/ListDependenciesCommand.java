@@ -1,7 +1,7 @@
 package io.vertx.forge.commands;
 
 import io.vertx.forge.VertxMavenFacet;
-import io.vertx.forge.dependencies.VertxDependency;
+import io.vertx.forge.config.VertxDependency;
 import org.jboss.forge.addon.facets.constraints.FacetConstraint;
 import org.jboss.forge.addon.ui.UIProvider;
 import org.jboss.forge.addon.ui.context.UIExecutionContext;

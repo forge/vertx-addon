@@ -1,9 +1,9 @@
-package io.vertx.forge.dependencies;
+package io.vertx.forge.config;
 
 /**
  * @author <a href="http://escoffier.me">Clement Escoffier</a>
  */
-public class Dependency {
+public class VertxDependency {
 
     private String artifactId;
     private String groupId;
@@ -13,12 +13,15 @@ public class Dependency {
     private String type;
     private String classifier;
 
+    private String name;
+    private String description;
+
 
     public String getArtifactId() {
         return artifactId;
     }
 
-    public Dependency setArtifactId(String artifactId) {
+    public VertxDependency setArtifactId(String artifactId) {
         this.artifactId = artifactId;
         return this;
     }
@@ -27,7 +30,7 @@ public class Dependency {
         return groupId;
     }
 
-    public Dependency setGroupId(String groupId) {
+    public VertxDependency setGroupId(String groupId) {
         this.groupId = groupId;
         return this;
     }
@@ -36,7 +39,7 @@ public class Dependency {
         return version;
     }
 
-    public Dependency setVersion(String version) {
+    public VertxDependency setVersion(String version) {
         this.version = version;
         return this;
     }
@@ -45,7 +48,7 @@ public class Dependency {
         return scope;
     }
 
-    public Dependency setScope(String scope) {
+    public VertxDependency setScope(String scope) {
         this.scope = scope;
         return this;
     }
@@ -54,7 +57,7 @@ public class Dependency {
         return type;
     }
 
-    public Dependency setType(String type) {
+    public VertxDependency setType(String type) {
         this.type = type;
         return this;
     }
@@ -63,8 +66,26 @@ public class Dependency {
         return classifier;
     }
 
-    public Dependency setClassifier(String classifier) {
+    public VertxDependency setClassifier(String classifier) {
         this.classifier = classifier;
+        return this;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public VertxDependency setName(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public VertxDependency setDescription(String description) {
+        this.description = description;
         return this;
     }
 }
