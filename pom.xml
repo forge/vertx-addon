@@ -22,13 +22,13 @@
 
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-    <version.forge>3.4.0.Final</version.forge>
-    <version.furnace>2.24.2.Final</version.furnace>
+    <version.forge>3.5.0.Final</version.forge>
+    <version.furnace>2.25.1.Final</version.furnace>
 
     <!-- Properties used to configure the addon -->
     <vertx-maven-plugin.version>1.0.1</vertx-maven-plugin.version>
     <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
-    <vertx.version>3.3.3</vertx.version>
+    <vertx.version>3.4.0.Beta1</vertx.version>
     <junit.version>4.12</junit.version>
 
     <!-- other versions -->
@@ -38,7 +38,7 @@
     <maven-javadoc-plugin.version>2.9.1</maven-javadoc-plugin.version>
     <maven-gpg-plugin.version>1.5</maven-gpg-plugin.version>
 
-    <assertj.version>3.6.1</assertj.version>
+    <assertj.version>3.6.2</assertj.version>
     <jackson.version>2.8.6</jackson.version>
   </properties>
   <dependencyManagement>
