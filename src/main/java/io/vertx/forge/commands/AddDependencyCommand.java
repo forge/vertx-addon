@@ -16,6 +16,7 @@ import org.jboss.forge.furnace.util.Lists;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
@@ -66,7 +67,18 @@ public class AddDependencyCommand extends AbstractVertxCommand {
     @Override
     public Result execute(UIExecutionContext context) throws Exception {
         Project project = getSelectedProject(context);
-        VertxMavenFacet facet = project.getFacet(VertxMavenFacet.class);
+        Optional<VertxMavenFacet> maybeFacet = project.getFacetAsOptional(VertxMavenFacet.class);
+
+        VertxMavenFacet facet;
+
+        if (!maybeFacet.isPresent()) {
+            super.facet.setFaceted(project);
+            super.facet.install();
+            facet = super.facet;
+        } else {
+            facet = maybeFacet.get();
+        }
+
         if (dependencies.hasValue()) {
             List<VertxDependency> deps = Lists.toList(dependencies.getValue());
             facet.addDependencies(deps);
@@ -77,6 +89,7 @@ public class AddDependencyCommand extends AbstractVertxCommand {
                 + "' were successfully added to the project descriptor");
         }
         return Results.success();
+
     }
 
     /**
