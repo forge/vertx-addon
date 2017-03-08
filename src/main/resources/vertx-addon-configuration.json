@@ -2,7 +2,7 @@
   "version": "3.4.0.Beta1",
 
   "availableVersions": [
-    "3.0.0", "3.1.0", "3.2.1", "3.3.2", "3.3.3", "3.4.0.Beta1"
+    "3.0.0", "3.1.0", "3.2.1", "3.3.2", "3.3.3", "3.4.0"
   ],
 
   "dependencies": [
@@ -133,6 +133,13 @@
       "version": "VERTX_VERSION"
     },
     {
+      "name": "Vert.x support for Kotlin",
+      "description": "Provide Kotlin support for Vert.x",
+      "groupId": "io.vertx",
+      "artifactId": "vertx-lang-kotlin-compiler",
+      "version": "VERTX_VERSION"
+    },
+    {
       "name": "Vert.x support for Ruby (JRuby)",
       "description": "Provide Ruby support for Vert.x",
       "groupId": "io.vertx",
@@ -154,6 +161,13 @@
       "version": "VERTX_VERSION"
     },
     {
+      "name": "Vert.x Config",
+      "description": "Retrieve configurations from different stores and formats",
+      "groupId": "io.vertx",
+      "artifactId": "vertx-config",
+      "version": "VERTX_VERSION"
+    },
+    {
       "name": "Vert.x Circuit Breaker",
       "description": "Provide a circuit breaker implementation to make applications more resilient",
       "groupId": "io.vertx",
@@ -172,6 +186,48 @@
       "description": "Import Consul services inside the Vert.x service discovery",
       "groupId": "io.vertx",
       "artifactId": "vertx-service-discovery-bridge-consul",
+      "version": "VERTX_VERSION"
+    },
+    {
+      "name": "Vert.x Configuration for Kubernetes",
+      "description": "Retrieve configuration from Kubernetes ConfigMaps",
+      "groupId": "io.vertx",
+      "artifactId": "vertx-config-kubernetes-configmap",
+      "version": "VERTX_VERSION"
+    },
+    {
+      "name": "Vert.x Configuration from a Git repository",
+      "description": "Retrieve configuration from a Git repository",
+      "groupId": "io.vertx",
+      "artifactId": "vertx-config-git",
+      "version": "VERTX_VERSION"
+    },
+    {
+      "name": "Vert.x Configuration - HOCON format",
+      "description": "Provide the HOCON support to Vert.x Config",
+      "groupId": "io.vertx",
+      "artifactId": "vertx-config-hocon",
+      "version": "VERTX_VERSION"
+    },
+    {
+      "name": "Vert.x Configuration - YAML format",
+      "description": "Provide the YAML support to Vert.x Config",
+      "groupId": "io.vertx",
+      "artifactId": "vertx-config-yaml",
+      "version": "VERTX_VERSION"
+    },
+    {
+      "name": "Vert.x Configuration from Apache Zookeeper",
+      "description": "Retrieve configuration from Apache Zookeeper",
+      "groupId": "io.vertx",
+      "artifactId": "vertx-config-zookeeper",
+      "version": "VERTX_VERSION"
+    },
+    {
+      "name": "Vert.x Configuration from a Redis server",
+      "description": "Retrieve configuration from a Redis server",
+      "groupId": "io.vertx",
+      "artifactId": "vertx-config-redis",
       "version": "VERTX_VERSION"
     },
     {
@@ -208,6 +264,13 @@
       "description": "Manage Vert.x cluster using Hazelcast",
       "groupId": "io.vertx",
       "artifactId": "vertx-hazelcast",
+      "version": "VERTX_VERSION"
+    },
+    {
+      "name": "Vert.x Cluster Manager based on Infinispan",
+      "description": "Manage Vert.x cluster using Infinispan",
+      "groupId": "io.vertx",
+      "artifactId": "vertx-infinispan",
       "version": "VERTX_VERSION"
     },
     {
@@ -298,6 +361,27 @@
       "description": "Deploy Vert.x verticles and services using HTTP",
       "groupId": "io.vertx",
       "artifactId": "vertx-http-service-factory",
+      "version": "VERTX_VERSION"
+    },
+    {
+      "name": "Vert.x Kafka Client",
+      "description": "Allows interacting with Apache Kafka",
+      "groupId": "io.vertx",
+      "artifactId": "vertx-kafka-client",
+      "version": "VERTX_VERSION"
+    },
+    {
+      "name": "Vert.x Consul Client",
+      "description": "Allows interacting with Consul",
+      "groupId": "io.vertx",
+      "artifactId": "vertx-consul-client",
+      "version": "VERTX_VERSION"
+    },
+    {
+      "name": "Vert.x gRPC",
+      "description": "Generates and consumers gRPC services",
+      "groupId": "io.vertx",
+      "artifactId": "vertx-grpc",
       "version": "VERTX_VERSION"
     }
   ]
