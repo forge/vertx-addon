@@ -3,17 +3,19 @@
 
 This JBoss Forge addon lets you create Vert.x projects.
 
-It let you:
+It lets you:
 
 * create new Vert.x project
 * add verticles in Java, Groovy, JavaScript and Ruby
 
 In the current state it only support Maven and the generated project is packaged as a _fat jar_.
+
+This addon is now an official JBoss Forge addon (https://github.com/forge/vertx-addon).
         
 === Installation
 
 ```
-addon-install --coordinate me.escoffier.forge:vertx-forge-addon
+addon-install --coordinate org.jboss.forge.addon:vertx
 ```
 
 === Create project
@@ -21,46 +23,40 @@ addon-install --coordinate me.escoffier.forge:vertx-forge-addon
 To create a project, just create a _Maven_ project packaged as a _jar_ file, without a _technical stack_:
 
 ```
-[tmp]$ project-new
+[foo]$ project-new
 ***INFO*** Required inputs not satisfied, entering interactive mode
-* Project name:  some-project
-? Top level package [org.some.project]:  org.acme
+* Project name:  my-project
+? Top level package [org.my.project]:
 ? Version [1.0.0-SNAPSHOT]:
 ? Final name:
-? Project location [/Users/clement/tmp]:
+? Project location [/Users/clement/tmp/foo]:
+? Use Target Location Root? (If specified, it won't create a subdirectory inside the specified Project location) [y/N]:
 
 [0] (x) war
-[1] ( ) jar
-[2] ( ) parent
-[3] ( ) forge-addon
-[4] ( ) resource-jar
-[5] ( ) ear
-[6] ( ) from-archetype
-[7] ( ) generic
+[1] ( ) vert.x              <------
+[2] ( ) jar
+[3] ( ) parent
+[4] ( ) forge-addon
+[5] ( ) resource-jar
+[6] ( ) ear
+[7] ( ) from-archetype
+[8] ( ) generic
 
 Press <ENTER> to confirm, or <CTRL>+C to cancel.
-* Project type: [0-7] 1
+* Project type: [0-8] 1     <------ choose Vert.x
 
 [0] (x) Maven
+[1] ( ) None
 
 Press <ENTER> to confirm, or <CTRL>+C to cancel.
-* Build system: [0]
-
-[0] ( ) JAVA_EE_7
-[1] ( ) JAVA_EE_6
-[2] ( ) NONE
-
-Press <ENTER> to confirm, or <CTRL>+C to cancel.
-? Stack (The technology stack to be used in this project): [0-2] 2
-***SUCCESS*** Project named 'some-project' has been created.
+* Build system: [0-1]
+Configuring the vertx-maven-plugin...
+maven-compiler-plugin already configured in the `pom.xml`, updating configuration...
+vertx-maven-plugin is already configured in the `pom.xml` file - skipping its configuration
+***SUCCESS*** Project named 'my-project' has been created.
+***SUCCESS*** Vert.x project created successfully
+[my-project]$
 ```
-
-Then, add vert.x to the project using:
-
-```
-vertx-setup
-```
-
 Here you go you have your vert.x project with a java verticle
 
 === Build and Run
@@ -74,8 +70,11 @@ build
 Run it using:
 
 ```
-build org.codehaus.mojo:exec-maven-plugin:exec@run
+build vertx:run
 ```
+
+This command starts the Vert.x application in "redeploy" mode. If you change the files, it redeploys the up to date
+application. Check the http://vmp.fabric8.io for further details about the redeployment.
 
 Hit `CTRL+C` to quit the application
 
