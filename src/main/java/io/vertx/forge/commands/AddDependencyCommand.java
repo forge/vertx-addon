@@ -1,7 +1,10 @@
 package io.vertx.forge.commands;
 
-import io.vertx.forge.VertxMavenFacet;
-import io.vertx.forge.config.VertxDependency;
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
 import org.jboss.forge.addon.facets.constraints.FacetConstraint;
 import org.jboss.forge.addon.projects.Project;
 import org.jboss.forge.addon.projects.Projects;
@@ -14,15 +17,13 @@ import org.jboss.forge.addon.ui.result.Result;
 import org.jboss.forge.addon.ui.result.Results;
 import org.jboss.forge.furnace.util.Lists;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
+import io.vertx.forge.VertxMavenFacet;
+import io.vertx.forge.config.VertxDependency;
 
 /**
  * @author <a href="http://escoffier.me">Clement Escoffier</a>
  */
-@FacetConstraint({VertxMavenFacet.class})
+@FacetConstraint({ VertxMavenFacet.class })
 public class AddDependencyCommand extends AbstractVertxCommand {
 
     private UISelectMany<VertxDependency> dependencies;
@@ -36,7 +37,6 @@ public class AddDependencyCommand extends AbstractVertxCommand {
     public String description() {
         return "Add one or more dependency. Already used dependencies have been filtered out.";
     }
-
 
     @Override
     public void initializeUI(UIBuilder builder) throws Exception {
@@ -72,9 +72,7 @@ public class AddDependencyCommand extends AbstractVertxCommand {
         VertxMavenFacet facet;
 
         if (!maybeFacet.isPresent()) {
-            super.facet.setFaceted(project);
-            super.facet.install();
-            facet = super.facet;
+            facet = factory.install(project, VertxMavenFacet.class);
         } else {
             facet = maybeFacet.get();
         }
