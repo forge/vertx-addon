@@ -1,17 +1,28 @@
 package io.vertx.forge;
 
-import io.vertx.forge.config.VertxDependency;
-import io.vertx.forge.verticles.Verticles;
+import static io.vertx.forge.config.VertxAddonConfiguration.config;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Properties;
+import java.util.stream.Collectors;
+
+import javax.inject.Inject;
+
 import org.apache.maven.model.Model;
 import org.jboss.forge.addon.dependencies.Coordinate;
 import org.jboss.forge.addon.dependencies.Dependency;
 import org.jboss.forge.addon.dependencies.builder.CoordinateBuilder;
 import org.jboss.forge.addon.dependencies.builder.DependencyBuilder;
 import org.jboss.forge.addon.facets.AbstractFacet;
-import org.jboss.forge.addon.facets.FacetFactory;
 import org.jboss.forge.addon.facets.constraints.FacetConstraint;
 import org.jboss.forge.addon.facets.constraints.FacetConstraints;
-import org.jboss.forge.addon.maven.plugins.*;
+import org.jboss.forge.addon.maven.plugins.ConfigurationBuilder;
+import org.jboss.forge.addon.maven.plugins.ConfigurationElementBuilder;
+import org.jboss.forge.addon.maven.plugins.ExecutionBuilder;
+import org.jboss.forge.addon.maven.plugins.MavenPlugin;
+import org.jboss.forge.addon.maven.plugins.MavenPluginBuilder;
 import org.jboss.forge.addon.maven.projects.MavenFacet;
 import org.jboss.forge.addon.maven.projects.MavenPluginFacet;
 import org.jboss.forge.addon.parser.java.facets.JavaSourceFacet;
@@ -20,18 +31,13 @@ import org.jboss.forge.addon.projects.ProjectFacet;
 import org.jboss.forge.addon.projects.facets.DependencyFacet;
 import org.jboss.forge.addon.resource.ResourceFactory;
 
-import javax.inject.Inject;
-import java.util.*;
-import java.util.stream.Collectors;
-
-import static io.vertx.forge.config.VertxAddonConfiguration.config;
+import io.vertx.forge.config.VertxDependency;
+import io.vertx.forge.verticles.Verticles;
 
 /**
  * @author <a href="http://escoffier.me">Clement Escoffier</a>
  */
-@FacetConstraints(
-    @FacetConstraint(JavaSourceFacet.class)
-)
+@FacetConstraints(@FacetConstraint(JavaSourceFacet.class))
 public class VertxMavenFacet extends AbstractFacet<Project> implements ProjectFacet {
 
     private final static Coordinate VERTX_MAVEN_PLUGIN;
@@ -47,9 +53,6 @@ public class VertxMavenFacet extends AbstractFacet<Project> implements ProjectFa
         VERTX_VERSION = config().getVersion();
     }
 
-    @Inject
-    FacetFactory factory;
-
     private String vertxVersion = VERTX_VERSION;
 
     @Inject
@@ -58,8 +61,8 @@ public class VertxMavenFacet extends AbstractFacet<Project> implements ProjectFa
     @Inject
     Verticles verticles;
 
-    //TODO vertx-add-service itf --generate-js-client
-    //TODO remove vertx-remove-verticle, vertx-remove-service
+    // TODO vertx-add-service itf --generate-js-client
+    // TODO remove vertx-remove-verticle, vertx-remove-service
 
     @Override
     public boolean install() {
@@ -94,8 +97,7 @@ public class VertxMavenFacet extends AbstractFacet<Project> implements ProjectFa
 
             builder.addExecution(ExecutionBuilder.create().addGoal("initialize").addGoal("package").setId("vertx"));
             builder.createConfiguration().addConfigurationElement(
-                ConfigurationElementBuilder.create().setName("redeploy").setText("true")
-            );
+                ConfigurationElementBuilder.create().setName("redeploy").setText("true"));
 
             pluginFacet.addPlugin(builder);
 
@@ -143,7 +145,6 @@ public class VertxMavenFacet extends AbstractFacet<Project> implements ProjectFa
             configurationBuilder = ConfigurationBuilder.create();
         }
         builder.setConfiguration(configurationBuilder);
-
 
         if (plugin != null) {
             // Update it.
@@ -206,10 +207,9 @@ public class VertxMavenFacet extends AbstractFacet<Project> implements ProjectFa
         vertxVersion = value;
     }
 
-
     public void addDependencies(List<VertxDependency> deps) {
         deps.forEach(dep -> {
-            if (dep.getVersion() != null  && dep.getVersion().equalsIgnoreCase(vertxVersion)) {
+            if (dep.getVersion() != null && dep.getVersion().equalsIgnoreCase(vertxVersion)) {
                 ForgeUtils.getOrAddDependency(getFaceted(),
                     dep.getGroupId(), dep.getArtifactId(), null, dep.getClassifier(),
                     dep.getScope());
@@ -247,7 +247,6 @@ public class VertxMavenFacet extends AbstractFacet<Project> implements ProjectFa
         });
         save();
     }
-
 
     public Collection<VertxDependency> getUsedDependencies() {
         List<Dependency> dependencies = getDependencyFacet().getDependencies();

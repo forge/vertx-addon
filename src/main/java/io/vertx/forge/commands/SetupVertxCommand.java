@@ -1,5 +1,10 @@
 package io.vertx.forge.commands;
 
+import static io.vertx.forge.config.VertxAddonConfiguration.config;
+
+import javax.inject.Inject;
+
+import org.jboss.forge.addon.projects.Project;
 import org.jboss.forge.addon.ui.context.UIBuilder;
 import org.jboss.forge.addon.ui.context.UIExecutionContext;
 import org.jboss.forge.addon.ui.hints.InputType;
@@ -8,9 +13,7 @@ import org.jboss.forge.addon.ui.metadata.WithAttributes;
 import org.jboss.forge.addon.ui.result.Result;
 import org.jboss.forge.addon.ui.result.Results;
 
-import javax.inject.Inject;
-
-import static io.vertx.forge.config.VertxAddonConfiguration.config;
+import io.vertx.forge.VertxMavenFacet;
 
 /**
  * @author <a href="http://escoffier.me">Clement Escoffier</a>
@@ -32,9 +35,10 @@ public class SetupVertxCommand extends AbstractVertxCommand {
 
     @Override
     public Result execute(UIExecutionContext uiExecutionContext) throws Exception {
+        Project selectedProject = getSelectedProject(uiExecutionContext.getUIContext());
+        VertxMavenFacet facet = factory.create(selectedProject, VertxMavenFacet.class);
         facet.setVertxVersion(vertxVersion.getValue());
-        facet.setFaceted(getSelectedProject(uiExecutionContext.getUIContext()));
-        facet.install();
+        factory.install(selectedProject, facet);
         return Results.success("Vert.x project created successfully");
     }
 
