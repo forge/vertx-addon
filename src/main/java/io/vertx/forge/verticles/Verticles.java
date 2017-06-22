@@ -142,8 +142,6 @@ public class Verticles {
         .setAbstract(false)
         .setName(className)
         .setSuperType("io.vertx.core.AbstractVerticle");
-    mainVerticle
-        .addImport("io.vertx.core.*");
     mainVerticle.addMethod().setName("start").setBody(
         "vertx.createHttpServer().requestHandler(req -> req.response().end(\"Hello World!\")).listen(8080);")
         .setPublic()
