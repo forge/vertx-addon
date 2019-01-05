@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.jboss.forge.addon</groupId>
   <artifactId>vertx</artifactId>
-  <version>1.2.3</version>
+  <version>1.2.4-SNAPSHOT</version>
 
   <description>A JBoss Forge add-on for Eclipse Vert.x</description>
   <url>https://github.com/cescoffier/vertx-forge-addon</url>
@@ -288,7 +288,7 @@
     <url>https://github.com/forge/vertx-addon</url>
     <connection>https://github.com/forge/vertx-addon.git</connection>
     <developerConnection>scm:git:git@github.com:forge/vertx-addon.git</developerConnection>
-    <tag>vertx-1.2.3</tag>
+    <tag>HEAD</tag>
   </scm>
 
   <inceptionYear>2016</inceptionYear>
