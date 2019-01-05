@@ -10,3 +10,6 @@ buildNumber.properties
 .classpath
 .project
 .settings
+.factoryPath
+.idea
+.vscode
