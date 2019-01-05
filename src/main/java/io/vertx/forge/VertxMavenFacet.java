@@ -48,7 +48,7 @@ public class VertxMavenFacet extends AbstractFacet<Project> implements ProjectFa
 
     static {
         VERTX_MAVEN_PLUGIN = CoordinateBuilder
-            .create("io.fabric8:vertx-maven-plugin:" + config().getVersion("vertx-maven-plugin"));
+            .create("io.reactiverse:vertx-maven-plugin:" + config().getVersion("vertx-maven-plugin"));
         JUNIT_DEPENDENCY = CoordinateBuilder.create("junit:junit:" + config().getVersion("junit"));
         VERTX_VERSION = config().getVersion();
     }

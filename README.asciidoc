@@ -74,7 +74,7 @@ build vertx:run
 ```
 
 This command starts the Vert.x application in "redeploy" mode. If you change the files, it redeploys the up to date
-application. Check the http://vmp.fabric8.io for further details about the redeployment.
+application. Check the https://reactiverse.io/vertx-maven-plugin for further details about the redeployment.
 
 Hit `CTRL+C` to quit the application
 
